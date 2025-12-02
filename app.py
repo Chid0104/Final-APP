@@ -132,7 +132,11 @@ with col2:
             """, unsafe_allow_html=True)
 
         else:
-            result_label = idx_to_class[str(top_idx)]
+            # -------- SAFE FIX FOR KEY ERROR --------
+            if str(top_idx) in idx_to_class:
+                result_label = idx_to_class[str(top_idx)]
+            else:
+                result_label = "Unknown Waste Type"
 
             st.markdown(f"""
             <div class="result-card">
